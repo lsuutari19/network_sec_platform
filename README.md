@@ -1,3 +1,9 @@
+# This is the repository for Terraform deployment of the network security laboratory environment
+
+Main branch: lab1 configurations
+lab2 branch: lab2 configurations
+
+
 # Installation instructions
 
 This installation instruction is designed for Ubuntu operating system, but similar approach with your specific OS's package handler will work.

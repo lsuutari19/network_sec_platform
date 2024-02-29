@@ -4,17 +4,21 @@ resource "libvirt_volume" "ubuntu-qcow2" {
   source = var.ubuntu_img_url
   format = "qcow2"
 }
+
 data "template_file" "ubuntu-user_data" {
   template = file("${path.module}/config/ubuntu_cloud_init.yml")
 }
+
 data "template_file" "ubuntu-network_config" {
   template = file("${path.module}/config/network_config.yml")
 }
+
 resource "libvirt_cloudinit_disk" "ubuntu-commoninit" {
   name      = "ubuntu-commoninit.iso"
   user_data = data.template_file.ubuntu-user_data.rendered
   pool      = var.pool_dir
 }
+
 resource "libvirt_domain" "ubuntu-domain" {
   name    = "ubuntu-domain"
   memory  = "2048"

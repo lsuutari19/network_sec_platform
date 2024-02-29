@@ -1,6 +1,7 @@
 provider "libvirt" {
   uri = "qemu:///system"
 }
+
 resource "libvirt_volume" "pfsense-qcow2" {
   name   = "pfsense-qcow2"
   pool   = var.pool_dir
@@ -11,15 +12,17 @@ resource "libvirt_volume" "pfsense-qcow2" {
 data "template_file" "user_data" {
   template = file("${path.module}/config/cloud_init.yml")
 }
-# future use
+
 data "template_file" "network_config" {
   template = file("${path.module}/config/network_config.yml")
 }
+
 resource "libvirt_cloudinit_disk" "commoninit" {
   name      = "pfsense_commoninit.iso"
   user_data = data.template_file.user_data.rendered
   pool      = var.pool_dir
 }
+
 # connects pfSense to the external network
 resource "libvirt_network" "default_network" {
   name      = "external_network"
@@ -32,14 +35,17 @@ resource "libvirt_network" "default_network" {
     enabled = true
   }
 }
+
 resource "libvirt_network" "vmbr0-net" {
   name = "internal_network"
   mode = "none"
 }
+
 resource "libvirt_network" "vmbr1-net" {
   name = "demilitarized_zone"
   mode = "none"
 }
+
 resource "libvirt_domain" "domain-pfsense" {
   name    = "pfsense-domain"
   memory  = "2048"

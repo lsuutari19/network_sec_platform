@@ -57,6 +57,3 @@ resource "libvirt_domain" "kali-domain" {
     autoport    = true
   }
 }
-
-
-
