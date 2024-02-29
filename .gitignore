@@ -1,0 +1,17 @@
+terraform.tfstate*
+pfSense*
+.terraform.lock.hcl
+.terraform
+libvirt-terraform
+pfSense.img
+terraform_kvm/pfSense.img
+*.img
+*.qcow2
+*.tfstate
+*.iso
+*-qcow2
+large-disk
+*.ovpn
+*.zip
+*key*
+*volume
