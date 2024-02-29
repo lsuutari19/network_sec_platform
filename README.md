@@ -1,7 +1,7 @@
 # This is the repository for Terraform deployment of the network security laboratory environment
 
-## Main branch: lab1 configurations
-##lab2 branch: lab2 configurations
+**Main branch: lab1 configurations**  
+**lab2 branch: lab2 configurations**  
 
 
 # Installation instructions
