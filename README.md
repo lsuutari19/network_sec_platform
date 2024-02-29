@@ -1,7 +1,7 @@
 # This is the repository for Terraform deployment of the network security laboratory environment
 
-Main branch: lab1 configurations
-lab2 branch: lab2 configurations
+## Main branch: lab1 configurations
+##lab2 branch: lab2 configurations
 
 
 # Installation instructions
@@ -83,7 +83,7 @@ sudo systemctl restart libvirtd
 ```
 
 
-### Terraform magic
+### Provision the platform with Terraform
 ```
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 terraform init
