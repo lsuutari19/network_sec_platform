@@ -1,8 +1,0 @@
-[0;1;31m×[0m docker.service - Docker Application Container Engine
-     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
-     Active: [0;1;31mfailed[0m (Result: exit-code) since Fri 2024-03-01 12:41:44 EET; 46s ago
-TriggeredBy: [0;1;31m×[0m docker.socket
-       Docs: https://docs.docker.com
-    Process: 10822 ExecStart=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock [0;1;31m(code=exited, status=1/FAILURE)[0m
-   Main PID: 10822 (code=exited, status=1/FAILURE)
-        CPU: 227ms
