@@ -61,10 +61,10 @@ resource "docker_container" "container2" {
   publish_all_ports = true
 }
 
-output "network_data" {
+output "nginx network settings" {
   value = docker_container.container.network_data
 }
 
-output "network_data2" {
+output "ubuntu network settings" {
   value = docker_container.container2.network_data
 }
