@@ -2,15 +2,6 @@ provider "docker" {
   host = "unix:///var/run/docker.sock"
 }
 
-# move these to variables.tf
-variable "image_name" {
-  default = "myubuntu"
-}
-
-variable "dockerfile_location" {
-  default = "$PWD/ubuntu/"
-}
-
 /* resource "docker_network" "internal_network" {
     name = "internal_network"
     ipam_config {
@@ -22,14 +13,23 @@ variable "dockerfile_location" {
 
 resource "null_resource" "destroy_docker_container" {
   provisioner "local-exec" {
-    command = "docker rm ${docker_image.nginx.name} myubuntu"
+    command = "docker rm -f foo-nginx foo-ubuntu"
     on_failure = continue
+  }
+}
+
+resource "null_resource" "build_docker_image" {
+  provisioner "local-exec" {
+    command = "docker build -t myubuntu ./ubuntu/"
+  }
+  triggers = {
+    always_run = "${timestamp()}"
   }
 }
 
 resource "null_resource" "create_docker_network" {
   provisioner "local-exec" {
-    command     = "docker network rm docker_kvm_net || echo \"network doesnt exist yet\""
+    command     = "docker network rm -f docker_kvm_net || echo \"network doesnt exist yet\""
     interpreter = ["sh", "-c"]
     on_failure  = continue
   }
@@ -48,7 +48,7 @@ resource "docker_image" "nginx" {
 }
 
 resource "docker_image" "ubuntu" {
-  name = var.image_name
+  name = "myubuntu:latest"
 }
 
 resource "docker_container" "container" {
@@ -62,8 +62,8 @@ resource "docker_container" "container" {
 }
 
 resource "docker_container" "container2" {
-  depends_on = [libvirt_domain.domain-pfsense, null_resource.create_docker_network]
-  image      = docker_image.ubuntu.image_id
+  # depends_on = [libvirt_domain.domain-pfsense, null_resource.create_docker_network, null_resource.build_docker_image]
+  image      =  "myubuntu"
   name       = "foo-ubuntu"
   must_run   = true
   networks_advanced {
