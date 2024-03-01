@@ -2,7 +2,7 @@ provider "libvirt" {
   uri = "qemu:///system"
 }
 
-resource "libvirt_volume" "pfsense-qcow2" {
+/* resource "libvirt_volume" "pfsense-qcow2" {
   name   = "pfsense-qcow2"
   pool   = var.pool_dir
   source = var.pfsense_img_url
@@ -84,3 +84,4 @@ resource "libvirt_domain" "domain-pfsense" {
     autoport    = true
   }
 }
+ */

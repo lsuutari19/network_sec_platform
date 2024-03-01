@@ -3,5 +3,8 @@ terraform {
     libvirt = {
       source = "dmacvicar/libvirt"
     }
+    docker = {
+      source = "kreuzwerker/docker"
+    }
   }
 }
