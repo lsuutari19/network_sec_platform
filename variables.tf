@@ -10,7 +10,9 @@ variable "pfsense_img_url" {
 
 variable "ubuntu_img_url" {
   description = "ubuntu image"
-  default     = "images/linux_server.qcow2"
+  #default     = "https://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.img"
+  #default = "https://cloud-images.ubuntu.com/releases/22.04/release/ubuntu-22.04-server-cloudimg-amd64.img"
+  default = "images/ubuntu-server.qcow2"
 }
 
 variable "kali_img_url" {
@@ -30,5 +32,5 @@ variable "ssh_private_key" {
 
 variable "pool_dir" {
   description = "path for vm_volume pool storage"
-  default     = "default"
+  default     = "default_pool"
 }

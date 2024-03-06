@@ -65,7 +65,7 @@ Defining this pool to point to ./volumes makes it easier for us to control the r
 ```
 sudo virsh pool-define /dev/stdin <<EOF
 <pool type='dir'>
-  <name>default</name>
+  <name>default_pool</name>
   <target>
     <path>$PWD/volumes</path>
   </target>
@@ -78,7 +78,7 @@ sudo virsh pool-autostart default_pool
 
 ### Configure user permisions for libvirt to storage pool
 ```
-sudo chown -R $(whoami):libvirt ~/images
+sudo chown -R $(whoami):libvirt ./images
 sudo systemctl restart libvirtd
 ```
 

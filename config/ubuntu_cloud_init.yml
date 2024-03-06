@@ -5,8 +5,6 @@ users:
     groups: users, admin
     home: /home/ubuntu
     shell: /bin/bash
-    ssh-authorized-keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6TmcJILkt13yT/h9LzJYojOCV41Ggi3rNv6XlpxcBQNN14sRRUWRCVfJfVY2GGn+fbVGSyg5SDpprteAM1xBH+KkrYMvUO0WJLMGAhQOqbfyxp/DXZVygBlRdzEwqiJoSKxm5xjPeQpJM9l5ytnnGR+YCr5T1zDwf1UA9AIU7ibQWx+mP8YcDgt3DBfK1e89XvG3VntTiILzeTsff50PfRys9167YRtOEx6REsq/5rM+qezQ9Gcbrz3dy9PABgDTdIK+5fdziwMGYzAfHpiofM5CIzEoevtfO7auCMfxn9yh772nYtcO/G6u8q/5V6eIphqYDcVbtGqsPiad8lXxZ root@localhost.localdomain
 ssh_pwauth: True
 disable_root: false
 chpasswd:

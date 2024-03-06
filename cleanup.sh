@@ -21,15 +21,15 @@ else
 fi
 
 # Command to destroy the virtual network
-sudo virsh net-destroy default_network
-sudo virsh net-undefine default_network
-sudo virsh net-destroy vmbr0-net
-sudo virsh net-undefine vmbr0-net
-sudo virsh net-destroy vmbr1-net
-sudo virsh net-undefine vmbr1-net
+sudo virsh net-destroy internal_network
+sudo virsh net-destroy external_network
+sudo virsh net-destroy demilitarized_zone
+sudo virsh net-undefine internal_network
+sudo virsh net-undefine external_network
+sudo virsh net-undefine demilitarized_zone
 
 result=$(sudo virsh net-list --all)
-if [[ $result == *default_network* || $result == *vmbr* ]]; then
+if [[ $result == *_network* || $result == *demilitarized_* ]]; then
     echo "Virtual networks could not be destroyed."
     exit 1;
 else
@@ -50,12 +50,12 @@ fi
 
 
 # Command to delete volumes
-sudo virsh vol-delete  ./images/commoninit.iso
-sudo virsh vol-delete ./images/pfsense-volume
-sudo virsh vol-delete ./images/ubuntu-commoninit.iso
-sudo virsh vol-delete ./images/ubuntu-volume
-sudo virsh vol-delete ./images/kali-commoninit.iso
-sudo virsh vol-delete  ./images/kali-volume
+sudo virsh vol-delete  ./volumes/commoninit.iso
+sudo virsh vol-delete ./volumes/pfsense-qcow2
+sudo virsh vol-delete ./volumes/ubuntu-commoninit.iso
+sudo virsh vol-delete ./volumes/ubuntu-qcow2
+sudo virsh vol-delete ./volumes/kali-commoninit.iso
+sudo virsh vol-delete  ./volumes/kali-qcow2
 
 
 result=$(sudo virsh vol-list --pool default)
