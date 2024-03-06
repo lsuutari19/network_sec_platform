@@ -30,5 +30,5 @@ variable "ssh_private_key" {
 
 variable "pool_dir" {
   description = "path for vm_volume pool storage"
-  default     = "default"
+  default     = "default_pool"
 }
