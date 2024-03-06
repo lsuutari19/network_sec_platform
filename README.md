@@ -65,7 +65,7 @@ Defining this pool to point to ./volumes makes it easier for us to control the r
 ```
 sudo virsh pool-define /dev/stdin <<EOF
 <pool type='dir'>
-  <name>default</name>
+  <name>default_pool</name>
   <target>
     <path>$PWD/volumes</path>
   </target>
@@ -78,7 +78,7 @@ sudo virsh pool-autostart default_pool
 
 ### Configure user permisions for libvirt to storage pool
 ```
-sudo chown -R $(whoami):libvirt ~/images
+sudo chown -R $(whoami):libvirt ./images
 sudo systemctl restart libvirtd
 ```
 
@@ -114,20 +114,20 @@ enable virtualization in the host system
 
 ```
 problem:
-pool default not found
+pool default_pool not found
 
 solution:
 sudo virsh pool-define /dev/stdin <<EOF
 <pool type='dir'>
-  <name>default</name>
+  <name>default_pool</name>
   <target>
-    <path>$PWD/images</path>
+    <path>$PWD/volumes</path>
   </target>
 </pool>
 EOF
 
-sudo virsh pool-start default
-sudo virsh pool-autostart default
+sudo virsh pool-start default_pool
+sudo virsh pool-autostart default_pool
 ```
 
 ```
