@@ -3,7 +3,7 @@ provider "libvirt" {
 }
 
 resource "libvirt_volume" "pfsense-qcow2" {
-  name   = "pfsense-qcow2"
+  name   = "pfsense-volume.qcow2"
   pool   = var.pool_dir
   source = var.pfsense_img_url
   format = "qcow2"

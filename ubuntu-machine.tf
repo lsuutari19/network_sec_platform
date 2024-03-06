@@ -1,5 +1,5 @@
 resource "libvirt_volume" "ubuntu-qcow2" {
-  name   = "ubuntu-qcow2"
+  name   = "ubuntu-volume.qcow2"
   pool   = var.pool_dir
   source = var.ubuntu_img_url
   format = "qcow2"

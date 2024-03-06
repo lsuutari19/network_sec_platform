@@ -1,5 +1,5 @@
 resource "libvirt_volume" "kali-qcow2" {
-  name   = "kali-qcow2"
+  name   = "kali-volume.qcow2"
   pool   = var.pool_dir
   source = var.kali_img_url
   format = "qcow2"
