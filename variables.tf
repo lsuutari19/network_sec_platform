@@ -10,7 +10,7 @@ variable "pfsense_img_url" {
 
 variable "ubuntu_img_url" {
   description = "ubuntu image"
-  default     = "images/linux_server.qcow2"
+  default     = "images/ubuntu_server.qcow2"
 }
 
 variable "kali_img_url" {
