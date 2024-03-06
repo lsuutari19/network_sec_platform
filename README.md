@@ -78,7 +78,7 @@ sudo virsh pool-autostart default_pool
 
 ### Configure user permisions for libvirt to storage pool
 ```
-sudo chown -R $(whoami):libvirt ./images
+sudo chown -R $(whoami):libvirt ./volumes
 sudo systemctl restart libvirtd
 ```
 
