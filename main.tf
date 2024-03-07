@@ -18,7 +18,7 @@ data "template_file" "network_config" {
 }
 
 resource "libvirt_cloudinit_disk" "commoninit" {
-  name      = "pfsense_commoninit.iso"
+  name      = "pfsense-commoninit.iso"
   user_data = data.template_file.user_data.rendered
   pool      = var.pool_dir
 }

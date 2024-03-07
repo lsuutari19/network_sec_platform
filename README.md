@@ -78,7 +78,7 @@ sudo virsh pool-autostart default_pool
 
 ### Configure user permisions for libvirt to storage pool
 ```
-sudo chown -R $(whoami):libvirt ./volumes
+sudo chown -R $(whoami):libvirt $PWD/volumes
 sudo systemctl restart libvirtd
 ```
 
@@ -128,6 +128,33 @@ EOF
 
 sudo virsh pool-start default_pool
 sudo virsh pool-autostart default_pool
+```
+
+```
+problem:
+Error: error creating libvirt domain: Cannot access storage file '/network_sec_platform/volumes/kali-qcow2' (as uid:962, gid:962): Permission denied
+
+solution:
+make sure that your user belongs to the libvirt group and the libvirt group has permissions to this directory, also make sure that "sudo virsh pool-dumpxml default_pool" gives the something like the following:
+
+<pool type='dir'>
+  <name>default_pool</name>
+  <uuid>3aeb4e71-811c-40f6-bc78-0dbf8f7f2b8c</uuid>
+  <capacity unit='bytes'>1005388820480</capacity>
+  <allocation unit='bytes'>623110905856</allocation>
+  <available unit='bytes'>382277914624</available>
+  <source>
+  </source>
+  <target>
+    <path>home/user/network_sec_laboratory/volumes</path>
+    <permissions>
+      <mode>0755</mode>
+      <owner>58320</owner>
+      <group>100</group>
+    </permissions>
+  </target>
+</pool>
+
 ```
 
 ```
