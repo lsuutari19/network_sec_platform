@@ -164,6 +164,14 @@ make sure that your user belongs to the libvirt group and the libvirt group has 
 ```
 
 ```
+problem: 
+Error: error defining libvirt domain: unsupported configuration: spice graphics are not supported with this QEMU
+
+solution:
+Try installing "qemu-full" package
+```
+
+```
 problem: VM is stuck at "booting from hard disk..."
 solution: Verify that you have installed the OVMF package to allow for UEFI virtualization
 ```
