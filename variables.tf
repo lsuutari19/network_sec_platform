@@ -5,7 +5,7 @@ variable "libvirt_disk_path" {
 
 variable "pfsense_img_url" {
   description = "pfsense image"
-  default     = "images/router_pfsense.qcow2"
+  default     = "images/pfsense_x.qcow2"
 }
 
 variable "ubuntu_img_url" {
