@@ -88,6 +88,8 @@ sudo systemctl restart libvirtd
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 terraform init
 terraform apply
+
+Note: the ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
 ```
 
 # Troubleshooting:
