@@ -11,7 +11,7 @@ This installation instruction is designed for Ubuntu operating system, but simil
 ## Install and setup libvirtd and necessary packages for UEFI virtualization
 ```
 sudo apt update
-sudo apt-get install qemu-kvm libvirt-daemon-system virt-top libguestfs-tools ovmf
+sudo apt-get install qemu-kvm libvirt-daemon-system virt-top libguestfs-tools ovmf bridge-utils dnsmasq ebtables
 sudo adduser $USER libvirt
 sudo usermod -aG libvirt $(whoami)
 ```
@@ -45,9 +45,18 @@ https://www.qemu.org/download/#linux
 ```
 qemu-system-x86_64 --version
 ```
-### download the relevant images & place them in the directory containing main.tf
+### Download the relevant images & place them in the directory containing main.tf
 
-TO-DO: Insert image download links here!
+There are four images that you need to download and place them into directory network_sec_platform/images_ 
+
+They have following names:
+
+1) kali-linux-2023.4-qemu-amd64.qcow2
+2) router_pfsense.qcow2
+3) linux_server.qcow2
+4) pfsense_x.qcow2 (this is for lab2)
+
+DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
 
 ### Install mkisofs
 ```
@@ -154,7 +163,7 @@ make sure that your user belongs to the libvirt group and the libvirt group has 
   <source>
   </source>
   <target>
-    <path>home/user/network_sec_laboratory/volumes</path>
+    <path>home/user/network_sec_platform/volumes</path>
     <permissions>
       <mode>0755</mode>
       <owner>58320</owner>
