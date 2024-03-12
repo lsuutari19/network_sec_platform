@@ -53,7 +53,7 @@ They have following names:
 
 1) kali-linux-2023.4-qemu-amd64.qcow2
 2) router_pfsense.qcow2
-3) linux_server.qcow2
+3) ubuntu_server.qcow2
 4) pfsense_x.qcow2 (this is for lab2)
 
 DOWNLOAD LINKS [Click here and append filename at the end of link to download that specific image file](https://a3s.fi/swift/v1/AUTH_d797295bcbc24cec98686c41a8e16ef5/CloudAndNetworkSecurity/)
