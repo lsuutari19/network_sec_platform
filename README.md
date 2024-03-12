@@ -98,6 +98,21 @@ sudo virsh pool-autostart default_pool
 ### Configure user permisions for libvirt to storage pool
 ```
 sudo chown -R $(whoami):libvirt $PWD/volumes
+
+Edit /etc/libvirt/qemu.conf file & uncomment user & group, and make the following changes:
+   [...] 
+   Some examples of valid values are:
+   #
+   user = "qemu"   # A user named "qemu"
+   user = "+0"     # Super user (uid=0)
+   user = "100"    # A user named "100" or a user with uid=100
+   #
+   user = "<your_username>"
+   The group for QEMU processes run by the system instance. It can be
+   specified in a similar way to user.
+   group = "libvirt"
+   [...]
+
 sudo systemctl restart libvirtd
 ```
 
@@ -108,7 +123,9 @@ export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 terraform init
 terraform apply
 
-Note: the ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
+Notes:
+  The ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
+  On a lot of OS's SELinux/apparmor messes up with the permissions for libvirt, uncomment and change /etc/libvirt/qemu.conf user and group: https://ostechnix.com/solved-cannot-access-storage-file-permission-denied-error-in-kvm-libvirt/
 ```
 
 # Troubleshooting:
