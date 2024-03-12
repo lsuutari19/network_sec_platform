@@ -153,7 +153,7 @@ sudo virsh pool-autostart default_pool
 
 ```
 problem:
-Error: error creating libvirt domain: Cannot access storage file '/network_sec_platform/volumes/kali-qcow2' (as uid:962, gid:962): Permission denied
+Error: error creating libvirt domain: Cannot access storage file '/network_sec_platform/volumes/kali-volume.qcow2' (as uid:962, gid:962): Permission denied
 
 solution 1: 
 uncomment and change /etc/libvirt/qemu.conf user and group: https://ostechnix.com/solved-cannot-access-storage-file-permission-denied-error-in-kvm-libvirt/ https://github.com/dmacvicar/terraform-provider-libvirt/issues/546
