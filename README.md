@@ -124,10 +124,13 @@ sudo systemctl restart libvirtd
 export TERRAFORM_LIBVIRT_TEST_DOMAIN_TYPE="qemu"
 terraform init
 terraform apply
-
-Notes:
-  The ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
-  On a lot of OS's SELinux/apparmor messes up with the permissions for libvirt, uncomment and change /etc/libvirt/qemu.conf user and group: https://ostechnix.com/solved-cannot-access-storage-file-permission-denied-error-in-kvm-libvirt/
+```
+**Notes:**
+- The ubuntu-domain takes a minute to start due to the nature of the cloud images and their preconfigurations.
+- On a lot of OS's SELinux/apparmor messes up with the permissions for libvirt, uncomment and change /etc/libvirt/qemu.conf user and group: https://ostechnix.com/solved-cannot-access-storage-file-permission-denied-error-in-kvm-libvirt/
+- To make sure networks autostart after a shutdown of hostmachine you can run
+```
+  virsh net-autostart internal_network && virsh net-autostart external_network && virsh net-autostart demilitarized_zone
 ```
 
 # Troubleshooting:
@@ -142,10 +145,19 @@ NOTE: After first successful deployment, do not use the cleanup.sh anymore, inst
 ```
 
 ```
+problem: restarting VMs not working after a shutdown, because xxx network is not up
+solution:
+
+virsh net-start internal_network
+virsh net-start external_network
+virsh net-start demilitarized_zone
+
+```
+
+```
 problem:  Mouse is not working very well in the Kali VM
 solution: add a tablet input option in virt-manager to the machine by clicking the blue info button under the "File" option and choose "Add Hardware" -> "Input" -> "Type: EvTouch USB Graphics Tablet" -> "Finish"
 ```
-
 
 ```
 problem:
