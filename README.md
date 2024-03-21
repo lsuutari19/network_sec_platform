@@ -135,9 +135,15 @@ Notes:
 General problems with first deployment:
 solution:
 run the cleanup.sh script
+If some resources fail to get removed by terraform check the virsh commands in the cleanup.sh (more at https://download.libvirt.org/virshcmdref/html-single/)
 
 NOTE: After first successful deployment, do not use the cleanup.sh anymore, instead use terraform destroy!!
 
+```
+
+```
+problem:  Mouse is not working very well in the Kali VM
+solution: add a tablet input option in virt-manager to the machine by clicking the blue info button under the "File" option and choose "Add Hardware" -> "Input" -> "Type: EvTouch USB Graphics Tablet" -> "Finish"
 ```
 
 
