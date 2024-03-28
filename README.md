@@ -243,7 +243,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 rustup
 
 Go to the cloned repository & build with Rust:
-cd virtio-fs
+cd virtiofsd
 cargo build --release
 
 Open virt-manager:
