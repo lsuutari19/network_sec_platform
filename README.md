@@ -233,4 +233,27 @@ Try installing "qemu-full" package
 problem: VM is stuck at "booting from hard disk..."
 solution: Verify that you have installed the OVMF package to allow for UEFI virtualization
 ```
+```
+problem: Cant create a shared filesystem virtiofsd "Unable to find a satisfying virtiofsd"
+solution:
+Clone the virtiofs rust repository & install Rust:
+git clone https://gitlab.com/virtio-fs/virtiofsd
+sudo apt install libcap-ng-dev libseccomp-dev
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup
+
+Go to the cloned repository & build with Rust:
+cd virtio-fs
+cargo build --release
+
+Open virt-manager:
+Enable xml editing from virt-manager -> Edit -> Preferences -> Enable XML editing
+
+Open Kali-domain from virt-manager and open the "Show virtual hardware details":
+Memory -> Enable shared memory
+
+Now add the Filesystem and then edit the XML and add the following (image of full xml below):
+<binary path="path to virtiofsd executable/>
+```
+![image](https://github.com/lsuutari19/network_sec_platform/assets/55877405/493d6f20-68a8-47f2-9a44-3cc2b1bbcff7)
 
