@@ -254,6 +254,8 @@ Memory -> Enable shared memory
 
 Now add the Filesystem and then edit the XML and add the following (image of full xml below):
 <binary path="path to virtiofsd executable/>
+
+Now reboot the system
 ```
 ![image](https://github.com/lsuutari19/network_sec_platform/assets/55877405/493d6f20-68a8-47f2-9a44-3cc2b1bbcff7)
 
