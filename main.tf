@@ -27,7 +27,7 @@ resource "libvirt_cloudinit_disk" "commoninit" {
 resource "libvirt_network" "default_network" {
   name      = "external_network"
   mode      = "nat"
-  addresses = ["198.168.122.2/24"]
+  addresses = ["192.168.122.2/24"]
   dns {
     enabled = true
   }
